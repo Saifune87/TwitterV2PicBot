@@ -6,8 +6,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include="bin\Debug\net5.0\charizard.jpg" />
+    <Content Include="bin\Debug\net5.0\poke.png" />
+    <Content Include="bin\Debug\net5.0\squirtle.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="6.0.0" />
     <PackageReference Include="TweetinviAPI" Version="5.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="bin\Debug\net5.0\ref\" />
   </ItemGroup>
 
 </Project>
