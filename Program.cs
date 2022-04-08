@@ -8,29 +8,34 @@ using Tweetinvi.Parameters;
 
 namespace TwitterV2PicBot
 {
-    class Program
+    public class Program
     {
-        static async Task Main(string[] args)
+
+        static void Main(string[] args)
+        {
+
+            Media();
+
+        }
+
+
+        public async static void Media()
         {
             //Auth.
-            var key = ConfigurationManager.AppSettings["ConsumerAPIKey"];
-            var secret = ConfigurationManager.AppSettings["ConsumerSecret"];
-            var at = ConfigurationManager.AppSettings["AccessToken"];
-            var ats = ConfigurationManager.AppSettings["AccessTokenSecret"];
-            TwitterClient UserClient = new TwitterClient(key, secret, at, ats);
+            string key = ConfigurationManager.AppSettings["ConsumerAPIKey"];
+            string secret = ConfigurationManager.AppSettings["ConsumerSecret"];
+            string at = ConfigurationManager.AppSettings["AccessToken"];
+            string ats = ConfigurationManager.AppSettings["AccessTokenSecret"];
 
+            TwitterClient UserClient = new TwitterClient(key, secret, at, ats);
             //Connect image.
-            byte[] ImageBytes = File.ReadAllBytes("charizard.jpg"); //--\TwitterV2PicBot\bin\Debug\net5.0\"
+            byte[] ImageBytes = File.ReadAllBytes("charizard.jpg");
 
             IMedia ImageIMedia = await UserClient.Upload.UploadTweetImageAsync(ImageBytes);
 
             //Send image with Parameters.
             ITweet TweetWithImage = await UserClient.Tweets.PublishTweetAsync(
                 new PublishTweetParameters("#PokeTest #CuteSalamandar #Salamandar") { Medias = { ImageIMedia } });
-
         }
 
-
     }
-
-}
